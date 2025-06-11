@@ -1,0 +1,44 @@
+/* Timer Container */
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.timer-display {
+    font-size: 6rem;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 3px 3px 0px black;
+}
+
+/* Arrow Buttons */
+.arrow {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 0px black;
+}
+
+.arrow.left {
+    transform: rotate(90deg);
+}
+
+.arrow.right {
+    transform: rotate(-90deg);
+}
+
+.arrow:hover {
+    color: #2cb9f4;
+    transform: scale(1.1) rotate(90deg);
+}
+
+.arrow.right:hover {
+    transform: scale(1.1) rotate(-90deg);
+}

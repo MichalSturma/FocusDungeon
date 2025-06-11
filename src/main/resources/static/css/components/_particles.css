@@ -1,0 +1,58 @@
+/* Background Particles */
+.background-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; 
+}
+
+.background-particle {
+    position: absolute;
+    width: 6px; 
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particle-float 8s infinite ease-out; 
+    box-shadow: 0 0 10px rgba(108, 142, 160, 0.8);
+}
+
+/* First layer of particles (Soft Blue) */
+.background-particle.layer-1 {
+    background: rgba(108, 142, 160, 0.7); /* #6C8EA0 */
+}
+
+/* Second layer of particles */
+.background-particle.layer-2 {
+    width: 4px;
+    height: 4px;
+    background: rgba(159, 183, 194, 0.6); 
+    animation-duration: 12s; /* Even slower */
+    box-shadow: 0 0 8px rgba(159, 183, 194, 0.6);
+}
+
+/* Third layer of particles (Pastel Blue) */
+.background-particle.layer-3 {
+    width: 8px;
+    height: 8px;
+    background: rgba(176, 196, 222, 0.7); 
+    animation-duration: 10s; 
+    box-shadow: 0 0 12px rgba(176, 196, 222, 0.8);
+}
+
+@keyframes particle-float {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) translateX(50px);
+    }
+}

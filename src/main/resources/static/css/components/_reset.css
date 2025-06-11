@@ -1,0 +1,42 @@
+/* Reset Time Modal Specific Styles */
+#reset-time-modal .modal-content {
+    width: 350px; /* Adjust width as needed */
+    text-align: center; /* Center the title and description */
+}
+
+#reset-time-modal h2 {
+    color: #2cb9f4;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px black;
+}
+
+#reset-time-modal p {
+    color: white;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 0px black;
+}
+
+.modal-options {
+    display: flex;
+    justify-content: space-between; /* Push Yes to the left and No to the right */
+    padding: 0 1rem; /* Add some padding to the sides */
+}
+
+.modal-option {
+    color: white; /* Plain white text */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px black;
+    transition: color 0.3s;
+}
+
+.modal-option:hover {
+    color: #2cb9f4; /* Change to blue on hover */
+}
+
+.modal-option#cancel-reset:hover {
+    color: #ff4d4d; /* Change to red on hover for "No" */
+}

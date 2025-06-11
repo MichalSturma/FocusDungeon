@@ -1,0 +1,165 @@
+/* Option Rows (Labels and Inputs Side by Side) */
+.option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* Adjust the width of the exit button */
+#exit-button {
+    width: 80%; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the button */
+}
+
+.option-row label {
+    color: white;
+    font-size: 0.8rem;
+    text-shadow: 1px 1px 0px black;
+    margin-right: 1rem;
+    white-space: nowrap; /* Prevent labels from breaking into multiple lines */
+    text-align: left; /* Align text to the left */
+}
+
+/* Add more space between "Options" and the first option */
+.modal-content h2 {
+    color: #2cb9f4;
+    font-size: 1.5rem;
+    margin-bottom: 2rem; /* Increase margin to add more space */
+    text-shadow: 2px 2px 0px black;
+}
+
+/* Style for range inputs only */
+.option-row input[type="range"] {
+    width: 60%; /* Adjust width for inputs */
+    cursor: pointer; /* Show pointer cursor */
+    background: transparent; /* Make the track background transparent */
+    -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+    appearance: none; /* Remove default styling for other browsers */
+    border: none; /* Ensure no border is applied */
+    outline: none; /* Remove outline */
+    position: relative; /* Needed for pseudo-element positioning */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Track styling for range inputs */
+.option-row input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px; /* Make the track thinner */
+    background: #ffffff; /* White color for the unfilled part */
+    border-radius: 2px; /* Slightly rounded corners */
+}
+
+.option-row input[type="range"]::-moz-range-track {
+    height: 4px; /* Make the track thinner */
+    background: #ffffff; /* White color for the unfilled part */
+    border-radius: 2px; /* Slightly rounded corners */
+}
+
+/* Thumb styling for range inputs */
+.option-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none; /* Remove default styling */
+    width: 16px; /* Smaller thumb */
+    height: 16px;
+    background: #2cb9f4; /* Use your theme color for the thumb */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer;
+    margin-top: -6px; /* Center the thumb vertically */
+    border: none; /* Ensure no border is applied */
+    position: relative; /* Needed for z-index */
+    z-index: 2; /* Ensure the thumb is above the pseudo-element */
+}
+
+.option-row input[type="range"]::-moz-range-thumb {
+    width: 16px; /* Smaller thumb */
+    height: 16px;
+    background: #2cb9f4; /* Use your theme color for the thumb */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer;
+    border: none; /* Ensure no border is applied */
+    position: relative; /* Needed for z-index */
+    z-index: 2; /* Ensure the thumb is above the pseudo-element */
+}
+
+/* Pseudo-element for the colored track (blue part) */
+.option-row input[type="range"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--range-percent, 50%); /* Dynamically set by JavaScript */
+    height: 4px; /* Match the track height */
+    background: #2cb9f4; /* Blue color for the filled part */
+    border-radius: 2px; /* Slightly rounded corners */
+    transform: translateY(-50%);
+    z-index: 1; /* Ensure it's below the thumb */
+}
+
+/* Ensure range input has no focus styling */
+.option-row input[type="range"]:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: none; /* Remove box shadow on focus */
+}
+
+/* Style for select dropdowns only */
+.option-row select {
+    width: 60%; /* Adjust width for inputs */
+    padding: 0.5rem;
+    background: #333;
+    color: white;
+    border: 2px solid #2cb9f4; /* Keep border for dropdowns */
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+}
+
+/* Exclude range inputs from the modal input styling */
+.modal-content input:not([type="range"]) {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    font-family: 'Press Start 2P', cursive;
+    width: 90%;
+    background: #333;
+    color: white;
+    border: 2px solid #2cb9f4;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Exclude range inputs from the modal input focus styling */
+.modal-content input:not([type="range"]):focus {
+    border-color: #2cb9f4; 
+    box-shadow: 0 0 10px rgba(44, 185, 244, 0.6); 
+}
+
+/* Wider modal for setTime.html */
+.set-time-page .modal-content {
+    width: 400px; /* Adjust the width as needed */
+    padding: 2rem;
+}
+
+/* Ensure range input has no focus styling */
+.option-row input[type="range"]:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: none; /* Remove box shadow on focus */
+}
+
+/* Options Button Styling */
+.settings-button span {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px black;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.settings-button span:hover {
+    color: #2cb9f4; /* Change to blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}

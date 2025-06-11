@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time - Focus Dungeon</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/setTime.js"></script>
+</head>
+
+<body class="set-time-page"> <!-- Add a page-specific class here -->
+    <!-- Background Particles -->
+    <div class="background-particles"></div>
+
+    <div class="main-page">
+        <!-- Title -->
+        <h1 class="visually-hidden">Set Time</h1>
+
+        <!-- Music Toggle -->
+        <div class="music-toggle">⏸</div>
+        <audio id="background-music" src="sounds/silentQuest.mp3" loop autoplay></audio>
+
+        <!-- Options Button -->
+        <div class="settings-button">
+            <span id="open-options-modal">OPTIONS</span>
+        </div>
+
+        <!-- Options Modal -->
+        <div id="options-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <h2>Options</h2>
+                <!-- Close Button (X in the upper right corner) -->
+                <span class="close">&times;</span>
+
+                <!-- Music Volume -->
+                <div class="option-row">
+                    <label for="music-volume">Music Volume:</label>
+                    <input type="range" id="music-volume" min="0" max="1" step="0.1" value="0.5">
+                </div>
+
+                <div class="option-row">
+                    <label for="sound-volume">Sound Volume:</label>
+                    <input type="range" id="sound-volume" min="0" max="1" step="0.1" value="0.5">
+                </div>
+
+                <!-- Background Choice -->
+                <div class="option-row">
+                    <label for="background-choice">Background:</label>
+                    <select id="background-choice">
+                        <option value="main">Deep Forest</option>
+                        <option value="japan.gif">Tokyo Day</option>
+                        <option value="forest.png">In the Darkness</option>
+                        <option value="city.gif">Groggy Morning</option>
+                        <option value="city2.gif">City Night</option>
+                    </select>
+                </div>
+
+                <!-- Music Choice -->
+                <div class="option-row">
+                    <label for="music-choice">Music:</label>
+                    <select id="music-choice">
+                        <option value="silentQuest">Silent Quest</option>
+                        <option value="snowyNight">Snowy Night</option>
+                        <option value="eternalSleep">Eternal Sleep</option>
+                        <option value="fallenKnight">Fallen Knight</option>
+                        <option value="underTheMoon">Under The Moon</option>
+                        <option value="tavernLullaby">Tavern Lullaby</option>
+                        <option value="finalBoss">Final Boss</option>
+                        <option value="dreamyReverie">Dreamy Reverie</option>
+                        <option value="lostInWaves">Lost In Waves</option>
+                    </select>
+                </div>
+
+                <!-- Exit Button -->
+                <div class="option-row">
+                    <button id="exit-button">Exit to Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer Section -->
+        <div class="timer-container">
+            <!-- Left Arrow (Down) -->
+            <button class="arrow left">></button>
+
+            <!-- Timer Display -->
+            <div class="timer-display">
+                <span id="hours">00</span>:<span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+
+            <!-- Right Arrow (Up) -->
+            <button class="arrow right">></button>
+        </div>
+
+        <!-- Set Time Button -->
+        <div class="menu">
+            <button id="startFocusButton">START FOCUS MODE</button>
+        </div>
+
+        <!-- Focus Mode Section (Initially Hidden) -->
+        <div id="focus-mode" class="hidden">
+            <!-- Focus Timer Display -->
+            <div class="timer-display focus-display">
+                <span id="focus-hours">00</span>:<span id="focus-minutes">00</span>:<span id="focus-seconds">00</span>
+            </div>
+
+            <!-- Dino Progress Container -->
+            <div class="dino-progress-container">
+                <img id="dino" src="images/dino.gif" alt="Dino Animation" class="dino">
+                <div class="progress-bar">
+                    <div id="timer-progress" class="progress"></div>
+                </div>
+            </div>
+
+            <!-- Focus Controls -->
+            <div id="focus-controls">
+                <button id="pauseButton">PAUSE</button>
+                <button id="resetButton">RESET</button>
+            </div>
+        </div>
+
+        <!-- Reset Time Confirmation Modal -->
+        <div id="reset-time-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <h2>Are you sure, Adventurer?</h2>
+                <p>If you reset the timer now, you will earn less XP for your journey. Are you sure you want to
+                    continue?</p>
+
+                <!-- Yes and No as Text -->
+                <div class="modal-options">
+                    <span id="confirm-reset" class="modal-option">Yes</span>
+                    <span id="cancel-reset" class="modal-option">No</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebration Modal -->
+        <div id="celebration-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <h2>Quest Complete!</h2>
+                <div class="xp-container">
+                    <div class="xp-amount">+<span id="xp-earned">0</span> XP</div>
+                </div>
+                <p class="celebration-message" id="celebration-message">Great work, adventurer! You've completed your
+                    focus quest!</p>
+
+                <!-- Stats summary -->
+                <div class="stats-summary">
+                    <div class="stat-row">
+                        <span class="stat-label">Focus Time:</span>
+                        <span class="stat-value" id="focus-time-stat">00:00:00</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Completion:</span>
+                        <span class="stat-value" id="completion-percent">100%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Focus Streak:</span>
+                        <span class="stat-value"><span id="focus-streak">1</span> day</span>
+                    </div>
+                </div>
+
+                <!-- Level progress -->
+                <div class="level-progress">
+                    <div class="level-container">
+                        <span class="level-label">LVL <span id="current-level">1</span></span>
+                        <div class="level-bar-container">
+                            <div id="level-progress-bar" class="level-bar"></div>
+                        </div>
+                        <span class="level-label">LVL <span id="next-level">2</span></span>
+                    </div>
+                    <div class="xp-progress">
+                        <span id="current-xp">100</span>/<span id="xp-to-next-level">200</span> XP
+                    </div>
+                </div>
+
+                <!-- Continue Button -->
+                <button id="continue-button" class="modal-button">CONTINUE</button>
+            </div>
+        </div>
+
+        <div id="stats-button" class="stats-button">STATS</div>
+
+        <div id="stats-panel" class="stats-panel">
+            <div class="stats-close" id="stats-close">&times;</div>
+            <h2>Adventurer's Log</h2>
+
+            <!-- Total Focus Time -->
+            <div class="stats-section">
+                <h3>Total Focus Time</h3>
+                <div class="stats-item">
+                    <span class="stats-label">Time Spent:</span>
+                    <span class="stats-value" id="total-focus-time">0h 0m</span>
+                </div>
+            </div>
+
+            <!-- Sessions Completed -->
+            <div class="stats-section">
+                <h3>Sessions Completed</h3>
+                <div class="stats-item">
+                    <span class="stats-label">Quests:</span>
+                    <span class="stats-value" id="sessions-completed">0</span>
+                </div>
+            </div>
+
+            <!-- Longest Streak -->
+            <div class="stats-section">
+                <h3>Longest Streak</h3>
+                <div class="stats-item">
+                    <span class="stats-label">Days:</span>
+                    <span class="stats-value" id="longest-streak">0</span>
+                </div>
+            </div>
+
+            <!-- Daily Goal Progress -->
+            <div class="stats-section">
+                <h3>Daily Goal</h3>
+                <div class="daily-goal-container">
+                    <div class="daily-goal-progress">
+                        <div id="daily-goal-progress" class="daily-goal-bar"></div>
+                    </div>
+                    <div class="daily-goal-text">
+                        <span>Progress:</span>
+                        <span id="daily-goal-percent">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <h3>Level Progress</h3>
+                <div class="level-progress">
+                    <div class="level-container">
+                        <span class="level-label">LVL <span id="current-level-stats">1</span></span>
+                        <div class="level-bar-container">
+                            <div id="level-progress-bar-stats" class="level-bar"></div>
+                        </div>
+                        <span class="level-label">LVL <span id="next-level-stats">2</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="achievement-notifications"></div>
+    </div>
+</body>
+
+</html>

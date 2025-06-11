@@ -1,0 +1,322 @@
+/* Credits Page Styles */
+
+/* Base Layout */
+.credits-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    overflow: visible;
+}
+
+/* Back Button */
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #2cb9f4;
+    color: white;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 0px black;
+    z-index: 100;
+    margin-left: 55px;
+}
+
+.back-button:hover {
+    background: rgba(44, 185, 244, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #2cb9f4;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 0px black;
+    z-index: 100;
+}
+
+.music-toggle:hover {
+    background: rgba(44, 185, 244, 0.2);
+    transform: scale(1.1);
+}
+
+/* Header */
+.credits-header {
+    position: relative;
+    text-align: center;
+    margin: 4rem 0 3rem 0;
+}
+
+.credits-title {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 4px 4px 0px black, 0 0 20px #2cb9f4;
+    animation: glow 2s infinite alternate;
+    margin-bottom: 1rem;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 4px 4px 0px black, 0 0 20px #2cb9f4;
+    }
+    100% {
+        text-shadow: 4px 4px 0px black, 0 0 30px #2cb9f4, 0 0 40px #2cb9f4;
+    }
+}
+
+/* Credits Particles (Header) */
+.credits-particles {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 100px;
+    pointer-events: none;
+}
+
+.credit-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #2cb9f4;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #2cb9f4;
+    animation: sparkle 3s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+}
+
+/* Content Layout */
+.credits-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Credit Sections */
+.credit-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #2cb9f4;
+    padding: 2rem;
+    animation: slideUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.credit-section:nth-child(1) { animation-delay: 0.2s; }
+.credit-section:nth-child(2) { animation-delay: 0.4s; }
+.credit-section:nth-child(3) { animation-delay: 0.6s; }
+.credit-section:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.credit-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-color: white;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1rem;
+    color: #2cb9f4;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 0px black;
+    border-bottom: 2px solid #2cb9f4;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* Team Members */
+.team-member {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: rgba(44, 185, 244, 0.1);
+    border-left: 3px solid #2cb9f4;
+}
+
+.member-name {
+    font-size: 0.8rem;
+    color: white;
+    margin-bottom: 0.3rem;
+    text-shadow: 2px 2px 0px black;
+}
+
+.member-role {
+    font-size: 0.6rem;
+    color: #9fb7c2;
+    text-shadow: 1px 1px 0px black;
+}
+
+/* Credit Items */
+.credit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(44, 185, 244, 0.1);
+}
+
+.credit-label {
+    font-size: 0.7rem;
+    color: #2cb9f4;
+    text-shadow: 1px 1px 0px black;
+}
+
+.credit-value {
+    font-size: 0.6rem;
+    color: white;
+    text-shadow: 1px 1px 0px black;
+    text-align: right;
+}
+
+/* Special Thanks */
+.special-thanks {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    border-color: #8a2be2;
+}
+
+.special-thanks .section-title {
+    color: #8a2be2;
+    border-bottom-color: #8a2be2;
+}
+
+.thanks-text {
+    font-size: 0.7rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    text-shadow: 2px 2px 0px black;
+}
+
+.final-message {
+    font-size: 0.8rem;
+    color: #2cb9f4;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #2cb9f4;
+    text-shadow: 2px 2px 0px black;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 2px 2px 0px black, 0 0 10px #2cb9f4;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .credits-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .credits-title {
+        font-size: 2rem;
+    }
+
+    .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.6rem;
+    }
+
+    .music-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+
+    .credits-page {
+        padding: 1rem;
+    }
+}
+
+/* Hover Effects */
+.team-member:hover,
+.credit-item:hover {
+    background: rgba(44, 185, 244, 0.2);
+    transform: translateX(5px);
+}
+
+.background-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #000; /* Black background when content scrolls past */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.credits-page {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+    /* Keep other styles */
+}

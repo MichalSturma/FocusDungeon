@@ -1,0 +1,32 @@
+/* Button styles */
+button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 2px 2px 0px black;
+}
+
+button:hover {
+    color: #2cb9f4;
+    transform: scale(1.1);
+}
+
+#startFocusButton {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 2px 2px 0px black;
+}
+
+#startFocusButton:hover {
+    color: #2cb9f4;
+    transform: scale(1.05);
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Dungeon</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <!-- Background Particles -->
+    <div class="background-particles"></div>
+
+    <div class="main-page">
+        <!-- Title -->
+        <h1 class="visually-hidden">Focus Dungeon</h1>
+        <div class="title-container">
+            <img src="images/title.png" alt="Focus Dungeon" class="title-image" />
+            <div class="particles"></div>
+        </div>
+
+        <!-- Music Toggle -->
+        <div class="music-toggle">⏸</div>
+        <audio id="background-music" src="sounds/silentQuest.mp3" loop autoplay></audio>
+
+        <div id="usernameDisplay" class="user-greeting"></div>
+
+
+        <!-- Menu -->
+        <div class="menu">
+            <a href="#" id="startButton">START</a>
+            <a href="profile.html" id="profileButton" class="hidden">PROFILE</a>
+            <a href="settings.html">SETTINGS</a>
+            <a href="credits.html">CREDITS</a>
+            <a href="leaderboard.html">LEADERBOARD</a>
+            <a href="#" id="logoutButton" class="hidden">LOGOUT</a>
+        </div>
+    </div>
+
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!-- Welcome Message -->
+            <h2>Welcome to Focus Dungeon!</h2>
+            <p>Please log in or sign up to continue.</p>
+
+            <!-- Tabs for Login and Signup -->
+            <div class="tabs">
+                <button id="loginTabButton" class="active">LOGIN</button>
+                <button id="signupTabButton">SIGNUP</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="tab-content active" novalidate>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">LOGIN</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="tab-content" novalidate>
+                <input type="text" id="newUsername" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="newPassword" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">SIGN UP</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content profile-content">
+            <span class="close">&times;</span>
+            <h2>PLAYER PROFILE</h2>
+
+            <div class="profile-inner">
+                <!-- Left Column -->
+                <div class="profile-header">
+                    <!-- In your index.html file, update the avatar-container div -->
+                    <div class="avatar-container">
+                        <img src="images/profile.jpg" alt="Avatar" id="profileAvatar" class="profile-avatar">
+                        <div class="level-badge" id="levelBadge">1</div>
+                        <div class="avatar-edit-overlay hidden">
+                            <span>EDIT</span>
+                        </div>
+                    </div>
+
+                    <!-- Add this modal at the bottom of your file (before </body>) -->
+                    <div id="avatarModal" class="modal hidden">
+                        <div class="modal-overlay"></div>
+                        <div class="modal-content avatar-modal-content">
+                            <span class="close">&times;</span>
+                            <h2>SELECT AVATAR</h2>
+                            <div class="avatar-grid" id="avatarGrid">
+                                <!-- Avatars will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h3 id="profileUsername">Username</h3>
+                        <div class="profile-stats">
+                            <span><i class="stat-icon">Joined: </i> <span id="joinDate">-</span></span>
+                        </div>
+                    </div>
+
+                    <div class="bio-section">
+                        <h3>BIO</h3>
+                        <div class="bio-content" id="bioContent">
+                            This user hasn't written a bio yet.
+                        </div>
+                        <textarea class="bio-edit hidden" id="bioEdit" maxlength="200"></textarea>
+                        <div class="bio-actions">
+                            <button class="btn-edit" id="editBioBtn">EDIT</button>
+                            <button class="btn-save hidden" id="saveBioBtn">SAVE</button>
+                            <button class="btn-cancel hidden" id="cancelBioBtn">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="profile-main">
+                    <!-- Tabs Navigation -->
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="stats">STATS</button>
+                        <button class="profile-tab" data-tab="friends">FRIENDS</button>
+                        <button class="profile-tab" data-tab="achievements">ACHIEVEMENTS</button>
+                        <button class="profile-tab" data-tab="inventory">INVENTORY</button>
+                    </div>
+
+                    <!-- Stats Tab -->
+                    <div class="tab-content active" id="stats-tab">
+                        <div class="xp-bar-container">
+                            <div class="xp-bar-label">
+                                <span>XP: <span id="currentXP">0</span>/<span id="nextLevelXP">100</span></span>
+                                <span>Level <span id="currentLevel">1</span></span>
+                            </div>
+                            <div class="xp-bar">
+                                <div class="xp-progress" id="xpProgress"></div>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalSessions">0</div>
+                                <div class="stat-label">SESSIONS</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalTime">0h</div>
+                                <div class="stat-label">TOTAL TIME</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="currentStreak">0</div>
+                                <div class="stat-label">STREAK</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="longestStreak">0</div>
+                                <div class="stat-label">RECORD</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add tab content -->
+                    <div class="tab-content" id="inventory-tab">
+                        <div class="inventory-section">
+                            <h3>INVENTORY</h3>
+                            <div class="inventory-grid" id="inventoryContainer">
+                                <!-- Items will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Friends Tab -->
+                    <div class="tab-content" id="friends-tab">
+                        <div class="friends-tab-content">
+                            <div class="friends-header">
+                                <h3>FRIENDS LIST</h3>
+                                <div class="friends-actions">
+                                    <button id="addFriendBtn">ADD FRIEND</button>
+                                    <button id="friendRequestsBtn">REQUESTS <span class="badge">2</span></button>
+                                </div>
+                            </div>
+
+                            <div class="friends-grid" id="friendsContainer">
+                                <!-- Friends will be loaded here -->
+                                <div class="friend-card">
+                                    <img src="images/profile.jpg" alt="Friend" class="friend-avatar">
+                                    <h4 class="friend-name">Player1</h4>
+                                    <div class="friend-level">Lvl. 5</div>
+                                    <div class="friend-actions">
+                                        <button>MSG</button>
+                                        <button>REMOVE</button>
+                                    </div>
+                                </div>
+                                <div class="friend-card">
+                                    <img src="images/profile.jpg" alt="Friend" class="friend-avatar">
+                                    <h4 class="friend-name">Player2</h4>
+                                    <div class="friend-level">Lvl. 3</div>
+                                    <div class="friend-actions">
+                                        <button>MSG</button>
+                                        <button>REMOVE</button>
+                                    </div>
+                                </div>
+                                <div class="no-friends hidden">
+                                    You don't have any friends yet. Click "ADD FRIEND" to start building your network!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Tab -->
+                    <div class="tab-content" id="achievements-tab">
+                        <div class="achievements-section">
+                            <h3>ACHIEVEMENTS</h3>
+                            <div class="achievements-grid" id="achievementsContainer">
+                                <div class="achievement-placeholder">More achievements coming soon!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>LEADERBOARD</h2>
+
+            <div class="leaderboard-tabs">
+                <button id="worldTab" class="leaderboard-tab active">WORLD</button>
+                <button id="friendsTab" class="leaderboard-tab">FRIENDS</button>
+            </div>
+
+            <!-- World Leaderboard -->
+            <div id="worldLeaderboard" class="leaderboard-content active">
+                <div class="leaderboard-header">
+                    <div>RANK</div>
+                    <div>USERNAME</div>
+                    <div>LEVEL</div>
+                    <div>XP</div>
+                    <div>STREAK</div>
+                </div>
+                <div id="worldLeaderboardContent" class="leaderboard-container"></div>
+            </div>
+
+            <!-- Friends Leaderboard -->
+            <div id="friendsLeaderboard" class="leaderboard-content">
+                <div class="leaderboard-header">
+                    <div>RANK</div>
+                    <div>USERNAME</div>
+                    <div>LEVEL</div>
+                    <div>XP</div>
+                    <div>STREAK</div>
+                </div>
+                <div id="friendsLeaderboardContent" class="leaderboard-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Friend Requests Modal -->
+    <div id="friendRequestsModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>FRIEND REQUESTS</h2>
+
+            <div class="requests-container" id="requestsContainer">
+                <!-- Requests will be loaded here -->
+                <div class="no-requests">
+                    You have no pending friend requests.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

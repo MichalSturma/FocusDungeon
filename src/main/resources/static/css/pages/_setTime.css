@@ -1,0 +1,23 @@
+/* Set Time Page Specific Styles */
+.set-time-page .modal-content {
+    width: 400px;
+    padding: 2rem;
+}
+
+.settings-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.settings-button a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.settings-button a:hover {
+    color: #2cb9f4;
+}

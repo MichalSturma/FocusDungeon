@@ -1,0 +1,37 @@
+/* Dino Progress Container */
+.dino-progress-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    position: relative;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 2px solid #666;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2cb9f4, #1a8bbf);
+    transition: width 0.5s ease;
+}
+
+/* Dino Animation */
+.dino {
+    width: 24px; /* Set to your dino's size */
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1; /* Ensure the dino is above the progress bar */
+}

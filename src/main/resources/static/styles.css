@@ -1,0 +1,23 @@
+@import url('css/base/_reset.css');
+@import url('css/base/_typography.css');
+@import url('css/base/_variables.css');
+
+@import url('css/components/_buttons.css');
+@import url('css/components/_focus-controls.css');
+@import url('css/components/_menu.css');
+@import url('css/components/_modal.css');
+@import url('css/components/_reset.css');
+@import url('css/components/_options.css');
+@import url('css/components/_celebration.css');
+@import url('css/components/_achievement.css');
+@import url('css/components/_music-toggle.css');
+@import url('css/components/_particles.css');
+@import url('css/components/_progress-bar.css');
+@import url('css/components/_timer.css');
+@import url('css/components/_leaderboard.css');
+@import url('css/components/_profile.css');
+
+
+@import url('css/pages/_index.css');
+@import url('css/pages/_setTime.css');
+@import url('css/pages/_credits.css');

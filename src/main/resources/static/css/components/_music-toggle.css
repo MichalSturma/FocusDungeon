@@ -1,0 +1,16 @@
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    z-index: 100;
+    transition: color 0.3s;
+}
+
+.music-toggle:hover {
+    color: #2cb9f4;
+}

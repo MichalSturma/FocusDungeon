@@ -1,0 +1,331 @@
+/* Index Page Specific Styles */
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+.title-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* Simple Username Display Styles */
+#usernameDisplay {
+    position: fixed;
+    top: 25px;
+    right: 20px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    text-shadow: 1px 1px 0 black;
+    padding: 0.5rem;
+    z-index: 100;
+}
+
+/* Make it slightly smaller on mobile */
+@media (max-width: 768px) {
+    #usernameDisplay {
+        font-size: 0.6rem;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.title-image {
+    animation: glow 1.5s infinite alternate, float 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px #2cb9f4) drop-shadow(0 0 20px #2cb9f4);
+    transform-origin: center;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 10px #2cb9f4) drop-shadow(0 0 20px #2cb9f4);
+    }
+    100% {
+        filter: drop-shadow(0 0 20px #2cb9f4) drop-shadow(0 0 40px #2cb9f4);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%; /* Match your avatar shape */
+}
+
+.lock-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.xp-requirement {
+    font-size: 12px; /* Smaller text for XP requirement */
+    font-weight: bold;
+}
+
+.avatar-option {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Match your avatar shape */
+    transition: all 0.3s ease;
+}
+
+.avatar-option-container {
+    cursor: pointer;
+    position: relative;
+    margin: 10px;
+}
+
+/* Optional: Add hover effect */
+.avatar-option-container:hover .avatar-option {
+    transform: scale(1.05);
+}
+
+.profile-avatar, #profileAvatar {
+    transition: opacity 0.3s ease;
+}
+
+.avatar-loading {
+    opacity: 0.5;
+}
+
+.avatar-error {
+    border: 2px solid #ff4444;
+}
+
+/* Friend Requests Modal */
+/* Friend Requests Modal - Updated Color Scheme */
+#friendRequestsModal .modal-content {
+    background-color: #0f1923; /* Darker blue background */
+    border: 3px solid #2cb9f4; /* Matching your glow color */
+    border-radius: 10px;
+    color: #e2e2e2;
+    font-family: 'Press Start 2P', cursive;
+    max-width: 500px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(44, 185, 244, 0.3); /* Subtle glow effect */
+}
+
+#friendRequestsModal h2 {
+    color: #2cb9f4; /* Matching your title glow */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #000;
+    position: relative;
+}
+
+#friendRequestsModal h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #2cb9f4, transparent);
+    margin: 10px auto 0;
+}
+
+.requests-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.no-requests {
+    color: #6d7b8d; /* Lighter gray-blue */
+    font-size: 0.8rem;
+    padding: 20px;
+    font-style: italic;
+}
+
+.request-card {
+    background-color: #162838; /* Dark blue-gray */
+    border: 2px solid #2cb9f4;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.request-card:hover {
+    background-color: #1a3248;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.request-user {
+    align-items: center;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.request-avatar {
+    border: 2px solid #2cb9f4;
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 15px;
+    object-fit: cover;
+    width: 50px;
+    box-shadow: 0 0 5px rgba(44, 185, 244, 0.5);
+}
+
+.request-info h4 {
+    color: #2cb9f4;
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+    text-align: left;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.request-info span {
+    color: #8a9bb1;
+    font-size: 0.7rem;
+}
+
+.request-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.request-btn {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.request-btn.accept {
+    background-color: rgba(44, 185, 244, 0.1);
+    border-color: #2cb9f4;
+    color: #2cb9f4;
+}
+
+.request-btn.accept:hover {
+    background-color: rgba(44, 185, 244, 0.3);
+    box-shadow: 0 0 8px rgba(44, 185, 244, 0.4);
+}
+
+.request-btn.decline {
+    background-color: rgba(244, 67, 54, 0.1);
+    border-color: #f44336;
+    color: #f44336;
+}
+
+.request-btn.decline:hover {
+    background-color: rgba(244, 67, 54, 0.3);
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+}
+
+/* Scrollbar styling */
+.requests-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.requests-container::-webkit-scrollbar-track {
+    background: #0f1923;
+    border-radius: 10px;
+}
+
+.requests-container::-webkit-scrollbar-thumb {
+    background-color: #2cb9f4;
+    border-radius: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.request-card {
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+}
+
+.request-card:nth-child(1) { animation-delay: 0.1s; }
+.request-card:nth-child(2) { animation-delay: 0.2s; }
+.request-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #friendRequestsModal .modal-content {
+        width: 90%;
+    }
+
+    .request-card {
+        padding: 10px;
+    }
+
+    .request-avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .request-info h4 {
+        font-size: 0.8rem;
+    }
+
+    .request-btn {
+        font-size: 0.6rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Loading state */
+.requests-loading {
+    color: #6d7b8d;
+    font-size: 0.8rem;
+    padding: 40px;
+    text-align: center;
+}
+
+.requests-loading::after {
+    content: "...";
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}

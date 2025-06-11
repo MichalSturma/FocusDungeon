@@ -1,0 +1,132 @@
+/* Leaderboard Tabs - Now matching modal.css tabs exactly */
+#leaderboard-modal .leaderboard-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+#leaderboard-modal .leaderboard-tab {
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: border-bottom 0.3s, transform 0.3s;
+    text-shadow: 1px 1px 0px black;
+}
+
+#leaderboard-modal .leaderboard-tab.active {
+    color: #2cb9f4;
+    border-bottom: 2px solid #2cb9f4;
+}
+
+#leaderboard-modal .leaderboard-tab:hover {
+    border-bottom: 2px solid #2cb9f4;
+    transform: scale(1.1);
+}
+
+/* Keep all your existing leaderboard styles below */
+#leaderboard-modal .modal-content {
+    width: 90%;
+    max-width: 800px;
+    padding: 1.5rem;
+}
+
+.leaderboard-content {
+    display: none;
+}
+
+.leaderboard-content.active {
+    display: block;
+}
+
+.leaderboard-header {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr;
+    padding: 0.5rem 1rem;
+    background-color: rgba(44, 185, 244, 0.2);
+    border-bottom: 1px solid #2cb9f4;
+    font-size: 0.7rem;
+    color: #2cb9f4;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr;
+    padding: 0.8rem 1rem;
+    align-items: center;
+    border-bottom: 1px solid rgba(44, 185, 244, 0.2);
+    transition: background-color 0.3s;
+}
+
+.leaderboard-row:hover {
+    background-color: rgba(44, 185, 244, 0.1);
+}
+
+.rank {
+    font-weight: bold;
+    text-align: center;
+}
+
+.username {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.level, .xp, .streak {
+    text-align: center;
+}
+
+/* Top 3 ranking styles */
+.rank-1 {
+    background-color: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid gold;
+}
+
+.rank-1 .rank {
+    color: gold;
+}
+
+.rank-2 {
+    background-color: rgba(192, 192, 192, 0.1);
+    border-left: 3px solid silver;
+}
+
+.rank-2 .rank {
+    color: silver;
+}
+
+.rank-3 {
+    background-color: rgba(205, 127, 50, 0.1);
+    border-left: 3px solid #cd7f32;
+}
+
+.rank-3 .rank {
+    color: #cd7f32;
+}
+
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .leaderboard-header, .leaderboard-row {
+        grid-template-columns: 40px 2fr 1fr;
+    }
+    
+    .xp, .streak {
+        display: none;
+    }
+    
+    .leaderboard-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.7rem;
+    }
+}
